@@ -1,0 +1,17 @@
+{
+    "name": "corstest",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "scripts": {
+        "install-server": "cd server && yarn install",
+        "install-client": "cd client && yarn install",
+        "install": "concurrently \"yarn install-server\" \"yarn install-client\"",
+        "server": "cd server && yarn dev",
+        "client": "cd client && yarn dev",
+        "dev": "concurrently \"yarn server\" \"yarn client\""
+    }
+}
