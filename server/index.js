@@ -3,10 +3,6 @@ var cors = require("cors");
 
 const app = express();
 const allowedOrigins = ["https://client.teleport.zarquon.sh:3080"];
-app.use((req, res, next) => {
-    console.log(req.method);
-    next();
-});
 
 app.use(
     cors({
@@ -22,10 +18,27 @@ app.use(
 );
 
 app.get("/", function (req, res) {
-    return res.json({ hello: "from the home page" });
+    return res.send(`
+        <!doctype html>
+        <html lang="en-US">
+        <head>
+            <meta charset="UTF-8" />
+            <title>My Cool API!</title>
+            <style>
+            html {
+                background: black;
+                color: gainsboro;
+            }
+            </style>
+        </head>
+        <body>
+            <p>Welcome to the API!</p>
+        </body>
+        </html>
+    `);
 });
 
-app.get("/thing", function (req, res) {
+app.get("/mydata", function (req, res) {
     return res.json({ hello: "world" });
 });
 

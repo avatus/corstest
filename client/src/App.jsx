@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+const apiUrl = "https://api.teleport.zarquon.sh:3080";
+
 export default function Home() {
     const [res, setRes] = useState(null);
     useEffect(() => {
-        fetch("https://api.teleport.zarquon.sh:3080/thing", {
+        fetch(`${apiUrl}/mydata`, {
             credentials: "include",
             headers: {
                 "X-Custom-Header": "value",
@@ -14,7 +16,7 @@ export default function Home() {
     return (
         <div>
             <div>hello</div>
-            <img src="https://api.teleport.zarquon.sh:3080/pic.png" />
+            <img src={`${apiUrl}/pic.png`} />
             <div>
                 <pre>{JSON.stringify(res)}</pre>
             </div>
